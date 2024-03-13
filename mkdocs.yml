@@ -1,0 +1,112 @@
+site_name: spsharman
+site_url: https://spsharman.com 
+site_description: This is documentation 
+site_author: Steve Sharman
+
+# repo_url: https://tl10k.dev
+
+use_directory_urls: true # this is used when linking the images e.g. [<img src="../images/mkdocs-serve.png"/ width="700" height="800">](images/mkdocs-serve.png)
+
+nav:
+    - Home: index.md
+    - ACI:
+        - Getting Started: categories/aci/getting-started/index.md
+        - Access Policies: categories/aci/access-policies/index.md
+        - Designing your tenants: categories/aci/tenant-design-options/index.md
+        - Route Leaking with EPGs: categories/aci/route-leaking-epgs/index.md
+        - Route Leaking with ESGs: categories/aci/route-leaking-esgs/index.md
+        - Working with tenant common: categories/aci/common-tenant/index.md
+        - Working with vzAny: categories/aci/vzAny/index.md
+    # - Random stuff:
+    #     - HTML Colour Codes: categories/random-stuff/html-colour-codes/index.md
+    #     - Route Leaking: categories/random-stuff/route-leaking/index.md
+    #     - Testing mkdocs: categories/random-stuff/mkdocs-testing/index.md
+
+    - Categories:
+        # - ACI:
+        #     - Access Policy Configuration: categories/aci/access-policies/index.md
+        #     - Designing your tenants: categories/aci/tenant-design-options/index.md
+        #     - Route Leaking with EPGs: categories/aci/route-leaking-epgs/index.md
+        #     - Route Leaking with ESGs: categories/aci/route-leaking-esgs/index.md
+        #     - Working with tenant common: categories/aci/common-tenant/index.md
+        #     - Working with vzAny: categories/aci/vzAny/index.md
+        - Random stuff:
+            - HTML Colour Codes: categories/random-stuff/html-colour-codes/index.md
+            - Route Leaking: categories/random-stuff/route-leaking/index.md
+            - Testing mkdocs: categories/random-stuff/mkdocs-testing/index.md
+        # - Git:
+        #     - Things I Keep Forgetting: categories/git/index.md
+
+theme:
+    name: material # https://squidfunk.github.io/mkdocs-material/
+    locale: en
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - django
+    features:
+    - search.highlight
+    - toc.integrate
+    - content.tooltips
+    # - content.code.copy
+    - content.code.annotate
+    - navigation.sections
+    - navigation.tabs
+    - search.share
+
+    icon:
+        admonition:
+        note: octicons/tag-16
+        abstract: octicons/checklist-16
+        info: octicons/info-16
+        tip: octicons/squirrel-16
+        success: octicons/check-16
+        question: octicons/question-16
+        warning: octicons/alert-16
+        failure: octicons/x-circle-16
+        danger: octicons/zap-16
+        bug: octicons/bug-16
+        example: octicons/beaker-16
+        quote: octicons/quote-16
+
+    palette:
+      # Palette toggle for light mode
+      - media: "(prefers-color-scheme: light)"
+        scheme: default
+        primary: blue
+        toggle:
+          icon: material/weather-night
+          name: Switch to dark mode
+  
+      # Palette toggle for dark mode
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        primary: blue
+        toggle:
+          icon: material/weather-sunny
+          name: Switch to light mode 
+
+markdown_extensions:
+    - toc:
+        permalink: 
+    - attr_list
+    - def_list
+    - md_in_html
+    - pymdownx.highlight:
+        anchor_linenums: true
+        line_spans: __span
+        pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.details
+    - pymdownx.superfences
+    - admonition
+
+plugins:
+    - search
+    - glightbox
+    # - git-revision-date-localized:
+    #     exclude:
+    #             - index.md
+    #- rss
+
