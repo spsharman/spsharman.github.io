@@ -12,26 +12,28 @@
         <meta name="author" content="Steve Sharman">
       
       
-        <link rel="canonical" href="https://spsharman.com/">
+        <link rel="canonical" href="https://spsharman.com/categories/aci/tenant-design-options/">
       
       
+        <link rel="prev" href="../access-policies/">
       
-        <link rel="next" href="categories/aci/getting-started/">
+      
+        <link rel="next" href="../route-leaking-epgs/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
     
     
       
-        <title>spsharman</title>
+        <title>Designing your tenants - spsharman</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,14 +52,14 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -66,7 +68,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -85,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome" class="md-skip">
+        <a href="#designing-your-tenants" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +101,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="spsharman" class="md-header__button md-logo" aria-label="spsharman" data-md-component="logo">
+    <a href="../../.." title="spsharman" class="md-header__button md-logo" aria-label="spsharman" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -119,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Designing your tenants
             
           </span>
         </div>
@@ -217,11 +219,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -236,11 +236,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="categories/aci/getting-started/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../getting-started/" class="md-tabs__link">
           
   
   ACI
@@ -264,7 +266,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="categories/random-stuff/html-colour-codes/" class="md-tabs__link">
+        <a href="../../random-stuff/html-colour-codes/" class="md-tabs__link">
           
   
   Categories
@@ -302,7 +304,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="spsharman" class="md-nav__button md-logo" aria-label="spsharman" data-md-component="logo">
+    <a href="../../.." title="spsharman" class="md-nav__button md-logo" aria-label="spsharman" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -317,30 +319,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -349,50 +331,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-little-about-me" class="md-nav__link">
-    <span class="md-ellipsis">
-      A little about me...
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="A little about me...">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#disclaimer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Disclaimer
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -401,25 +339,30 @@
       
   
   
+    
   
   
+  
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -430,7 +373,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             ACI
@@ -444,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/aci/getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -465,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/aci/access-policies/" class="md-nav__link">
+      <a href="../access-policies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -483,10 +426,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="categories/aci/tenant-design-options/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -495,6 +447,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -507,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/aci/route-leaking-epgs/" class="md-nav__link">
+      <a href="../route-leaking-epgs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -528,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/aci/route-leaking-esgs/" class="md-nav__link">
+      <a href="../route-leaking-esgs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/aci/common-tenant/" class="md-nav__link">
+      <a href="../common-tenant/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -570,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/aci/vzAny/" class="md-nav__link">
+      <a href="../vzAny/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/random-stuff/html-colour-codes/" class="md-nav__link">
+      <a href="../../random-stuff/html-colour-codes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -699,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/random-stuff/route-leaking/" class="md-nav__link">
+      <a href="../../random-stuff/route-leaking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -720,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="categories/random-stuff/mkdocs-testing/" class="md-nav__link">
+      <a href="../../random-stuff/mkdocs-testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,15 +717,7 @@
                   
 
 
-<h1 id="welcome">Welcome...<a class="headerlink" href="#welcome" title="Permanent link"></a></h1>
-<p>If you've stumbled across this site it's probably because you've been looking for something ACI related, or you've seen one of my presentations from Cisco Live or some other event.</p>
-<p>I put this page together for a couple of reasons, firstly because I've pulled together so many best practices for different customers that I thought I should consolidate them in one place, and secondly because I sometimes forget how I've done things :)</p>
-<h2 id="a-little-about-me">A little about me...<a class="headerlink" href="#a-little-about-me" title="Permanent link"></a></h2>
-<p>I've been at Cisco for longer than I can remember, I guess the ability to change roles and do different things is what's kept me here at Cisco. I'm based in the UK and currently work as a Global Solutions Architect in Cisco's Data Center Networking team, prior to working in the Global team I've worked for both the EMEA and UK Systems Engineering teams.</p>
-<p>Outside of work I love to travel and go diving whenever I get the chance.</p>
-<p>According to my kids I draw pictures for a job, which is partially true .... I do love a diagram...!</p>
-<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link"></a></h3>
-<p>By way of a disclaimer, the opinions expressed here are very much my personal thoughts and opinions. The content is not checked, approved, or endorsed by Cisco.</p>
+<h1 id="designing-your-tenants">Designing your tenants<a class="headerlink" href="#designing-your-tenants" title="Permanent link"></a></h1>
 
 
 
@@ -819,10 +764,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["search.highlight", "toc.integrate", "content.tooltips", "content.code.annotate", "navigation.sections", "navigation.tabs", "search.share"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.highlight", "toc.integrate", "content.tooltips", "content.code.annotate", "navigation.sections", "navigation.tabs", "search.share"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
