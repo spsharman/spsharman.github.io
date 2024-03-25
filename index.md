@@ -2,7 +2,7 @@
 
 If you've stumbled across this site it's probably because you've been looking for something ACI related, or you've seen one of my presentations from Cisco Live or some other event.
 
-I put this page together for a couple of reasons, firstly because I've pulled together so many best practices for different customers that I thought I should consolidate them in one place, and secondly because I sometimes forget how I've done things :)
+I put this page together for a couple of reasons, firstly because I've put together so many best practices for different customers that I thought I should consolidate them in one place, and secondly because I sometimes forget how I've done things :)
 
 ## A little about me...
 
@@ -14,4 +14,4 @@ According to my kids I draw pictures for a job, which is partially true .... I d
 
 ### Disclaimer
 
-By way of a disclaimer, the opinions expressed here are very much my personal thoughts and opinions. The content is not checked, approved, or endorsed by Cisco.
+By way of a disclaimer, the opinions expressed here are very much my personal thoughts and opinions. The content is not checked, approved, or in any way endorsed by Cisco.
