@@ -23,7 +23,7 @@ nav:
 
     - Random stuff:
         - HTML Colour Codes: categories/random-stuff/html-colour-codes/index.md
-        - Testing mkdocs: categories/random-stuff/mkdocs-testing/index.md
+        # - Testing mkdocs: categories/random-stuff/mkdocs-testing/index.md
 
         # - Git:
         #     - Things I Keep Forgetting: categories/git/index.md
