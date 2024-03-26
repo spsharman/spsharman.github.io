@@ -12,6 +12,7 @@ nav:
     - ACI:
         - Getting Started: categories/aci/getting-started/index.md
         - Access Policies: categories/aci/access-policies/index.md
+        - Tenant Building Blocks: categories/aci/tenant-building-blocks/index.md
         - Designing your tenants: categories/aci/tenant-design-options/index.md
         - Route Leaking with EPGs: categories/aci/route-leaking-epgs/index.md
         - Route Leaking with ESGs: categories/aci/route-leaking-esgs/index.md
