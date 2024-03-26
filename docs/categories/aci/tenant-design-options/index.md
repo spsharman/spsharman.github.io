@@ -1,6 +1,6 @@
 # Designing your tenants (draft)
 
-Before exploring different tenant design options it would be worth taking a few minutes to review the securiy considerations when using [tenant common](../common-tenant/index.md). Aside from the security considerations ACI administrators should also consider prexfixing any object in tenant common with the "common." prefix so that they unique names on the fabric.
+Before exploring different tenant design options it would be worth taking a few minutes to review the securiy considerations when using [tenant common](../tenant-common/index.md). Aside from the security considerations ACI administrators should also consider prexfixing any object in tenant common with the "common." prefix so that they unique names on the fabric.
 
 It is also worth understaning the security considerations when using [vzAny](../vzAny/index.md) as vzAny always includes the extEPG.
 

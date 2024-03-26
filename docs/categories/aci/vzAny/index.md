@@ -52,4 +52,4 @@ With the contract in place all EPGs/ESGs within the VRF also inplicitedly become
     <img src="./images/4.png" width="800" >
 </div>
 
-I typically avoid placing services in tenant common unless I've got a really (really) good reason for putting something in tenant common - have a look at [working with tenant common](../common-tenant/index.md) for more details.
+I typically avoid placing services in tenant common unless I've got a really (really) good reason for putting something in tenant common - have a look at [working with tenant common](../tenant-common/index.md) for more details.

@@ -15,7 +15,7 @@ nav:
         - Designing your tenants: categories/aci/tenant-design-options/index.md
         - Route Leaking with EPGs: categories/aci/route-leaking-epgs/index.md
         - Route Leaking with ESGs: categories/aci/route-leaking-esgs/index.md
-        - Working with tenant common: categories/aci/common-tenant/index.md
+        - Working with tenant common: categories/aci/tenant-common/index.md
         - Working with vzAny: categories/aci/vzAny/index.md
 
     - Networking:
