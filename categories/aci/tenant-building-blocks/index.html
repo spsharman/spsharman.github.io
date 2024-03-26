@@ -1,0 +1,902 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is documentation">
+      
+      
+        <meta name="author" content="Steve Sharman">
+      
+      
+        <link rel="canonical" href="https://spsharman.com/categories/aci/tenant-building-blocks/">
+      
+      
+        <link rel="prev" href="../access-policies/">
+      
+      
+        <link rel="next" href="../tenant-design-options/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>Tenant Building Blocks - spsharman</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#understanding-aci-building-blocks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="spsharman" class="md-header__button md-logo" aria-label="spsharman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            spsharman
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tenant Building Blocks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../getting-started/" class="md-tabs__link">
+          
+  
+  ACI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../networking/route-leaking/" class="md-tabs__link">
+          
+  
+  Networking
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../random-stuff/html-colour-codes/" class="md-tabs__link">
+          
+  
+  Random stuff
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="spsharman" class="md-nav__button md-logo" aria-label="spsharman" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    spsharman
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ACI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ACI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access-policies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Policies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tenant Building Blocks
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tenant Building Blocks
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bridge-domains-and-epgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bridge Domains and EPGs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bridge Domains and EPGs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-is-the-best-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which is the best option...?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bridge-domains-and-esgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bridge Domains and ESGs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenant-design-options/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Designing your tenants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../route-leaking-epgs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route Leaking with EPGs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../route-leaking-esgs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route Leaking with ESGs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenant-common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with tenant common
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vzAny/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with vzAny
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/route-leaking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route Leaking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Random stuff
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Random stuff
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../random-stuff/html-colour-codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML Colour Codes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="understanding-aci-building-blocks">Understanding ACI Building Blocks<a class="headerlink" href="#understanding-aci-building-blocks" title="Permanent link"></a></h1>
+<p>Before jumping on the UI to start configuring your network it is worth taking a step back to consider the relationship between different objects that you'll be touching within your ACI tenants.</p>
+<p>I guess the first thing to do is to understand the building blocks and what they actually do:</p>
+<ul>
+<li><strong>Tenant</strong> - a tenant is simply an administrative boundary, you can think of it like a VPC in AWS. It generally makes sense to align tenants around a customer's business functions, for example a bank may have a tenant for "consumer finance" and another tenant for "commercial finance", or they may acutally break those tenants into smaller administrative boundaries - "consumer finance - production", "consumer finance - pre-production", "consumer finance - staging" etc.</li>
+<li><strong>VRF</strong> - a VRF is the same as a VRF on any other router, it routes internally and externally, it can only live inside a single tenant. The VRF can operate it either enforced mode (default), or unenforced mode. When operating in the default enforced mode communication on the VRF is blocked and is only permitted though the use of Contracts (ACLs). Switching between enforced mode and unenforced mode is a disruptive operation.</li>
+<li><strong>Bridge Domain</strong> - a Bridge Domain (BD) is a VXLAN segment that is associated with (mapped to) a single VRF. A BD may or may not have associated gateway(s) i.e. a Bridge Domain can be considered to be either Layer 2 or Layer 3. When you configure a gateway on a BD it dynamically creates an SVI on the VRF.</li>
+<li><strong>Application Profile</strong> - an Application Profile is simply a folder in which to configure your security groups. The security groups are either VLAN based (EPGs) or IP/MAC based (ESGs).</li>
+<li><strong>Endpoint Groups</strong> - An Endpoint Group (EPG) classifies/accepts traffic coming into a given switch/interface/VLAN for security purposes. Contracts can be applied to/between EPGs to allow communication.</li>
+<li><strong>Endpoint Security Group</strong> - An Endpoint Security Group (ESG) classifies traffic within a VRF by MAC/IP/EPG/Tag for security purposes. Contracts can be applied to/between ESGs to allow communication. </li>
+</ul>
+<p>ACI is able to abstract the different building blocks to build extremely flexible (or confusing) network designs.</p>
+<h2 id="bridge-domains-and-epgs">Bridge Domains and EPGs<a class="headerlink" href="#bridge-domains-and-epgs" title="Permanent link"></a></h2>
+<p>A diagram always (hopefully) speaks a thousand words...!</p>
+<p>In the diagram below you'll see how the building blocks hang together, there is a Tenant "demo" with a VRF "vrf-01". </p>
+<p>The VRF contains 5x Bridge Domains and their associated EPGs:</p>
+<div class="row" style="display: table;margin: 0 auto">
+    <a class="glightbox" href="./images/1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="./images/1.png" width="800" ></a>
+</div>
+
+<ul>
+<li><strong>BD: vlan-10</strong> - this is a Layer 2 Bridge Domain which has a single EPG (<strong>vlan-10</strong>). <ul>
+<li><strong>EPG: vlan-10</strong> - this EPG is used for "linux" hosts and classifies/accepts traffic on VLAN10 on interface 101/1/1 and interface 102/1/1.</li>
+</ul>
+</li>
+<li><strong>BD: 10.0.11.0_24</strong> - this is a Layer 3 Bridge Domain with an SVI of 10.0.11.1/24, and a single EPG (<strong>vlan-sg-10</strong>). <ul>
+<li><strong>EPG: vlan-sg-10</strong> - this EPG is used for "linux" hosts and classifies/accepts traffic on VLAN10 on interface 101/1/1 and interface 102/1/1.</li>
+</ul>
+</li>
+<li><strong>BD: 10.0.12.0_24</strong> - this is a Layer 3 Bridge Domain with an SVI of 10.0.12.1/24, and it has two EPGS (<strong>vlan-sg-20</strong> and <strong>vlan-sg-30</strong>) which are isolated from each other. <ul>
+<li><strong>EPG: vlan-sg-20</strong> - this EPG uses static switch/interface/vlan to match traffic.</li>
+<li><strong>EPG: vlan-sg-30</strong> - this EPG is mapped to a VMware VDS and is dynamically allocated a VLAN.</li>
+</ul>
+</li>
+<li><strong>BD: 10.0.13-14_24</strong> - this is a Layer 3 Bridge Domain with 2x SVIs, 10.0.13.1/24 and 10.0.14.1/24. One SVI will be automatically defined as Primary, and the other SVI will be automatically defined as secondary. Now here's something to melt your mind...!! <ul>
+<li><strong>EPG: vlan-sg-40</strong> - endpoints will be mapped to vlan-sg-40 irrespective of whether they're on the 10.0.13.0 subnet or the 10.0.14.0 subnet <strong>provided</strong> that they match VLAN13 on 101/1/1 or VLAN14 on 102/1/1 i.e. it is entirely possible to map endpoints from different subnets (on the same BD) to the same security group. </li>
+<li><strong>EPG: vlan-sg-50</strong> - this EPG is mapped to a VMware VDS and is dynamically allocated a VLAN.</li>
+</ul>
+</li>
+<li><strong>BD: 10.0.15-16_24</strong> - this is a Layer 3 Bridge Domain with 2x SVIs, 10.0.15.1/24 and 10.0.16.1/24. <ul>
+<li><strong>EPG: vlan-sg-60</strong> - this EPG is the same as the previous example, endpoints can be attached to VLAN15 or VLAN16, and they can be on the 10.0.15.0/24 subnet and/or the 10.0.16.0/24 subnet. </li>
+<li><strong>EPG: vlan-sg-70</strong> - this EPG classifies endpoints from VLAN17 or VLAN18 irrespective of whether they're on the 10.0.15.0 subnet or the 10.0.16.0 subnet, plus it classifies endpoints from the VLAN which is dynamically allocated to the VMware VDS.</li>
+</ul>
+</li>
+</ul>
+<h3 id="which-is-the-best-option">Which is the best option...?<a class="headerlink" href="#which-is-the-best-option" title="Permanent link"></a></h3>
+<p>Generally speaking most customers create a single BD/EPG relationship, the reason for this design choice is twofold:</p>
+<ol>
+<li>It's simple to understand as in a traditional network you always have a single VLAN/SVI realtionship, and whilst it's true that you can configure secondary SVIs, it quite rare to see that type of configuration outside of migration scenarios.</li>
+<li>When you're migrating from a legacy network to ACI you'll have a single VLAN/SVI in the legacy world that you'll want to bring onto ACI.</li>
+</ol>
+<p>Keeping things simple makes it easy to troubleshoot!</p>
+<h2 id="bridge-domains-and-esgs">Bridge Domains and ESGs<a class="headerlink" href="#bridge-domains-and-esgs" title="Permanent link"></a></h2>
+<p>The fundamental difference between between EPGs and ESGs is that ESG operate across Bridge Domains in a VRF.</p>
+<p>So what does this mean? </p>
+<p>Quite simply it means that you can build security groups irrespective of which BD/subnet an endpoint is attached to. </p>
+<p>Consider a scenario with a banking customer where you have a VRF with a number of Bridge Domains (subnets), each Bridge Domain has a single EPG - a simple, traditional design. The VRF subnets are not dedicated to specific business functions, and as such the subnets are shared between "consumer finance" and "commerical finance". </p>
+<p>The customer has a requirement to ringfence their workloads, using ESGs you can easily classify endpoints into two different ESGs giving you visibility and (optionally) security of the workloads.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.highlight", "toc.integrate", "content.tooltips", "content.code.copy", "content.code.annotate", "navigation.sections", "navigation.tabs", "search.share"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
