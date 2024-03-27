@@ -5,7 +5,7 @@ Before jumping on the UI to start configuring your network it is worth taking a 
 I guess the first thing to do is to understand the building blocks and what they actually do:
 
 - **Tenant** - a tenant is simply an administrative boundary, you can think of it like a VPC in AWS. It generally makes sense to align tenants around a customer's business functions, for example a bank may have a tenant for "consumer finance" and another tenant for "commercial finance", or they may acutally break those tenants into smaller administrative boundaries - "consumer finance - production", "consumer finance - pre-production", "consumer finance - staging" etc.
-- **VRF** - a VRF is the same as a VRF on any other router, it routes internally and externally, it can only live inside a single tenant. The VRF can operate it either enforced mode (default), or unenforced mode. When operating in the default enforced mode communication on the VRF is blocked and is only permitted though the use of Contracts (ACLs). Switching between enforced mode and unenforced mode is a disruptive operation.
+- **VRF** - a VRF is the same as a VRF on any other router, it routes internally and externally (L3out in ACI terminology), it can only live inside a single tenant. The VRF can operate it either enforced mode (default), or unenforced mode. When operating in the default enforced mode communication on the VRF is blocked and is only permitted though the use of Contracts (ACLs). Switching between enforced mode and unenforced mode is a disruptive operation.
 - **Bridge Domain** - a Bridge Domain (BD) is a VXLAN segment that is associated with (mapped to) a single VRF. A BD may or may not have associated gateway(s) i.e. a Bridge Domain can be considered to be either Layer 2 or Layer 3. When you configure a gateway on a BD it dynamically creates an SVI on the VRF.
 - **Application Profile** - an Application Profile is simply a folder in which to configure your security groups. The security groups are either VLAN based (EPGs) or IP/MAC based (ESGs).
 - **Endpoint Groups** - An Endpoint Group (EPG) classifies/accepts traffic coming into a given switch/interface/VLAN for security purposes. Contracts can be applied to/between EPGs to allow communication.
@@ -17,9 +17,9 @@ ACI is able to abstract the different building blocks to build extremely flexibl
 
 A diagram always (hopefully) speaks a thousand words...!
 
-In the diagram below you'll see how the building blocks hang together, there is a Tenant "demo" with a VRF "vrf-01". 
+In the diagram below you'll see how the building blocks hang together. There is a Tenant (demo) with a VRF (vrf-01). The VRF has 5x Bridge Domains each with one or more associated EPGs. 
 
-The VRF contains 5x Bridge Domains and their associated EPGs:
+Now what I should point out is that most (the vast majority) of customers will deploy a single BD:EPG design, in other words a single Subnet:VLAN design - more on that below.
 
 <div class="row" style="display: table;margin: 0 auto">
     <img src="./images/1.png" width="800" >
