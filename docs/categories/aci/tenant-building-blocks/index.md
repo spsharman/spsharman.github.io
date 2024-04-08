@@ -11,23 +11,39 @@ I guess the first thing to do is to understand the building blocks and what they
 - **Endpoint Groups** - An Endpoint Group (EPG) classifies/accepts traffic coming into a given switch/interface/VLAN for security purposes. Contracts can be applied to/between EPGs to allow communication.
 - **Endpoint Security Group** - An Endpoint Security Group (ESG) classifies traffic within a VRF by MAC/IP/EPG/Tag for security purposes. Contracts can be applied to/between ESGs to allow communication. 
 
-ACI is able to abstract the different building blocks to build extremely flexible (or confusing) network designs.
+## So what's different than a traditional network...?
 
-## Bridge Domains and EPGs
+The first thing that's different is that there's the concept of a Tenant, however as described above, the Tenant is just an administrative boundary - so nothing too confusing there (hopefully).
+
+The second thing that's different is that ACI has a configuration folder called an Application Profile which is where you create your VLANs, or in ACI terminology your EPGs. For example, you might create a Application Profile (folder) that is named `VLANS-10-20`, and in that folder you'd create EPGs for VLANS 10 to 20. 
+
+Alternatively you might create an Application Profile (folder) which is named `online-boutique`, and in that folder you'd create the security groups (EPGs or ESGs) for your application. 
+
+There's no right or wrong way to use Application Profiles, you simply decide how you want to organise your configuration.
+
+The third, and probably the hardest thing to wrap your head around, is that ACI allows you to have multiple VLANs (EPGs) on the same forwarding segment (BD). In a traditional network you would typically have a 1:1 relationship between a VLAN and a SVI, there might be a case where you might have more than one SVI per VLAN - the additional SVIs would be IP secondaries, however you would never see multiple VLANs per SVI (n:1). 
+
+ACI is able to attach multiple EPGs to a BD, each EPG can contain one or more VLANs allowing you to build extremely flexible (or confusing) network designs.
+
+I find the best way to think about an EPG is to think that it is simply a security boundary containing one or more switches/interfaces and their associated VLANs.
+
+## What does this look like...?
 
 A diagram always (hopefully) speaks a thousand words...!
 
 In the diagram below you'll see how the building blocks hang together. There is a Tenant (demo) with a VRF (vrf-01). The VRF has 5x Bridge Domains each with one or more associated EPGs. 
 
-Now what I should point out is that most (the vast majority) of customers will deploy a single BD:EPG design, in other words a single Subnet:VLAN design - more on that below.
-
 <div class="row" style="display: table;margin: 0 auto">
     <img src="./images/1.png" width="800" >
 </div>
 
-- **BD: vlan-10** - this is a Layer 2 Bridge Domain which has a single EPG (**vlan-10**). 
-    - **EPG: vlan-10** - this EPG is used for "linux" hosts and classifies/accepts traffic on VLAN10 on interface 101/1/1 and interface 102/1/1.
-- **BD: 10.0.11.0_24** - this is a Layer 3 Bridge Domain with an SVI of 10.0.11.1/24, and a single EPG (**vlan-sg-10**). 
+As you work from left to right on the diagram you'll see that the deployment options become increasingly flexible, or complex depending on how you view them.
+
+I should point out that most (the vast majority) of customers will deploy a single BD:EPG design, in other words a single Subnet:VLAN design. It's rare to see customers deploying multiple SVIs per BD.
+
+- **BD: vlan-10** - this is a Layer 2 Bridge Domain (i.e. there's no SVI), attached to the BD is a single EPG (**vlan-10**).
+    - **EPG: vlan-10** - this EPG is used for "linux" hosts and classifies/accepts traffic on VLAN10 on interface 101/1/1 and interface 102/1/1. The default gateway for the workloads on VLAN10 must be an external router/firewall as there is no SVI on the BD.
+- **BD: 10.0.11.0_24** - this is a Layer 3 Bridge Domain with an SVI of 10.0.11.1/24, and a single EPG (**vlan-sg-10**).
     - **EPG: vlan-sg-10** - this EPG is used for "linux" hosts and classifies/accepts traffic on VLAN10 on interface 101/1/1 and interface 102/1/1.
 - **BD: 10.0.12.0_24** - this is a Layer 3 Bridge Domain with an SVI of 10.0.12.1/24, and it has two EPGS (**vlan-sg-20** and **vlan-sg-30**) which are isolated from each other. 
     - **EPG: vlan-sg-20** - this EPG uses static switch/interface/vlan to match traffic.
@@ -54,8 +70,10 @@ The fundamental difference between between EPGs and ESGs is that ESG operate acr
 
 So what does this mean? 
 
-Quite simply it means that you can build security groups irrespective of which BD/subnet an endpoint is attached to. 
+Quite simply it means that you can build flexible security groups irrespective of which BD/subnet an endpoint is attached to. 
 
-Consider a scenario with a banking customer where you have a VRF with a number of Bridge Domains (subnets), each Bridge Domain has a single EPG - a simple, traditional design. The VRF subnets are not dedicated to specific business functions, and as such the subnets are shared between "consumer finance" and "commerical finance". 
+Consider a scenario where you have "Production" and "Pre-production" workloads running on the same subnets, using ESGs you can easily classify endpoints into two different ESGs giving you segmentation, visibility and (optionally) security of the workloads.
 
-The customer has a requirement to ringfence their workloads, using ESGs you can easily classify endpoints into two different ESGs giving you visibility and (optionally) security of the workloads.
+<div class="row" style="display: table;margin: 0 auto">
+    <img src="./images/2.png" width="800" >
+</div>
