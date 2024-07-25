@@ -180,7 +180,7 @@ If we have a look at the Consumer VRF (`demo-05:vrf-03`) we can see that subnet 
 
 The Consumer VRF only has it's locally connected subnets.
 
-???+ success "Consumer Routing Table (`demo-05:vrf-02`)"
+<!-- ???+ success "Consumer Routing Table (`demo-05:vrf-03`)" -->
     ``` code hl_lines="11-14 25-28"
         aci-dev-01-apic-01# fabric 101-102 show ip route vrf demo-05:vrf-03
         ----------------------------------------------------------------
